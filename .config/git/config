@@ -1,8 +1,0 @@
-[user]
-	name = tusqasi
-	email = 2002.tushar.kuntawar@gmail.com
-
-[core]
-    editor = env nvim
-[safe]
-	directory = /opt/flutter

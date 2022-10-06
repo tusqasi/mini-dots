@@ -31,22 +31,8 @@ set_from_resource $ws5  i3-wm.workspace.05.name 5
 ## Launch // Terminal // <> Enter ##
 bindsym $mod+Return exec $terminal -e $shell
 
-## Launch // Terminal // <> Enter ##
-bindsym $mod+$alt+o exec /home/tusqasi/scripts/ocr
-
 ## Launch // Browser // <><Ctrl> o ##
 bindsym $mod+o exec $browser
-## Launch // scrcpt // <><Ctrl> o ##
-bindsym $mod+s exec scrcpy
-
-## Launch Tmux session chooser // < +p >
-bindsym $mod+p  exec ~/scripts/rofi_tmux.py
-
-## Launch // rofi // <><Shift> Space ##
-bindsym $mod+space exec "rofi -show combi -combi-modi 'drun,run,window' -modi combi"
-
-## Emoji  // < + alt + e>##
-bindsym $mod+$alt+e exec rofimoji
 
 ###############################################################################
 # Window and Workspace Navigation
@@ -236,18 +222,13 @@ bindsym $mod+r mode "Resize Mode"
 # Disable titlebar
 set_from_resource $i3-wm.window.border.size i3-wm.window.border.size 2
 set_from_resource $i3-wm.floatingwindow.border.size i3-wm.floatingwindow.border.size 1
-default_border pixel $i3-wm.window.border.size
-default_floating_border pixel $i3-wm.floatingwindow.border.size
 
 
 # Enable popup during fullscreen
 set_from_resource $i3-wm.gaps.popup_during_fullscreen i3-wm.gaps.popup_during_fullscreen smart
-popup_during_fullscreen $i3-wm.gaps.popup_during_fullscreen
 
 # window focus follows your mouse movements as the mouse crosses window borders
 set_from_resource $i3-wm
-focus_follows_mouse $i3-wm.gaps.focus_follows_mouse
-
 
 # colors
 # class                 border  backgr. text    indicator child_border
@@ -260,30 +241,3 @@ bar {
     position top
     font pango: Terminus 10px
 }
-
-###############################################################################
-# External programs launched with i3
-###############################################################################
-
-exec --no-startup-id exec ~/scripts/startup
-
-# Plasma compatibility improvements
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [class="yakuake"] floating enable
-for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
-for_window [class="gcolor3" ] flllo enable
-no_focus [class="plasmashell" window_type="notification"]
-
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-exec --no-startup-id /usr/lib/pam_kwallet_init
